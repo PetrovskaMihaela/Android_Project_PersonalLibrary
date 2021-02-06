@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditBook"
+    android:background="@drawable/background1">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--<include
+            layout="@layout/main_toolbar"
+            />-->
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Edit Book"
+            android:id="@+id/edit_toolbarr"
+            android:background="@color/colorPrimary"
+            app:titleTextColor="@color/textWhite"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Book To Your Library"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:gravity="center_horizontal"
+            android:layout_margin="30dp"
+            android:textColor="@color/colorAccent"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/container_background"
+            android:padding="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            >
+
+            <EditText
+                android:id="@+id/edit_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter title"
+                android:inputType="textPersonName"
+                android:backgroundTint="#00000000"
+                android:textAlignment="center"/>
+
+            <EditText
+                android:id="@+id/edit_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter author"
+                android:inputType="textPersonName"
+                android:backgroundTint="#00000000"
+                android:textAlignment="center"/>
+
+            <EditText
+                android:id="@+id/edit_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:hint="Enter details (optional)"
+                android:backgroundTint="#00000000"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/edit_finish_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="When do you plan on finishing it?"
+                android:inputType="none"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:textAlignment="center"
+                android:textSize="17sp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp">
+            <ImageButton
+                android:id="@+id/edit_delete"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_delete"
+                android:background="@drawable/button_red"
+                android:padding="18dp"
+                android:layout_marginRight="15dp"
+                android:onClick="ClickEditDelete"/>
+
+            <ImageButton
+                android:id="@+id/edit_save"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_save"
+                android:background="@drawable/button_green"
+                android:padding="18dp"
+                android:onClick="ClickEditSave"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

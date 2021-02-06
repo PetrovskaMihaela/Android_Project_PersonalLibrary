@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PersonalLibrary</string>
+    <string name="thumbnail">tumbnail</string>
+    <string name="Failed_to_Load_data">failed to load</string>
+    <string name="appbar_scrolling_view_behavior">"layout_behavior "</string>
+    <string name="YOUR_API_KEY">AIzaSyAidoCMaXy7lTRVovlS913JTBOu0emWRhU</string>
+</resources>
