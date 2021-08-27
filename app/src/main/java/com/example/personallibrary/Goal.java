@@ -45,4 +45,5 @@ public class Goal {
     public void setPages(int pages) {
         this.pages = pages;
     }
+
 }
