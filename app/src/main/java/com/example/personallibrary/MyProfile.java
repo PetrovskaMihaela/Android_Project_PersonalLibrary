@@ -12,12 +12,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class MyProfile extends AppCompatActivity {
 
     private static String username = "";
     DrawerLayout drawerlayout;
 
-    TextView user;
+    TextView user, books, hours, pages, currentNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +27,27 @@ public class MyProfile extends AppCompatActivity {
         setContentView(R.layout.activity_my_profile);
 
         user = findViewById(R.id.username_prof);
+        books = findViewById(R.id.booksperyear);
+        hours = findViewById(R.id.hoursperweek);
+        pages = findViewById(R.id.pagesperday);
+        currentNo = findViewById(R.id.booksinlib);
         drawerlayout = findViewById(R.id.drawer_layout);
+
+        DatabaseHelper db = new DatabaseHelper(this);
 
         Intent i = getIntent();
         username = i.getStringExtra("username");
 
         user.setText(username);
+
+        Goal goal = db.getGoal(username);
+
+        books.setText(String.valueOf(goal.getBooks()));
+        hours.setText(String.valueOf(goal.getHours()));
+        pages.setText(String.valueOf(goal.getPages()));
+
+        List<BookA> books = db.getBooks();
+        currentNo.setText(String.valueOf(books.size()));
     }
 
     public void ClickMenu(View view){
@@ -58,7 +75,8 @@ public class MyProfile extends AppCompatActivity {
     }
 
     public void ClickHome(View view){
-        MyProfile.redirectActivity(this, Home.class);
+        redirectActivity(this, Home.class);
+
     }
 
     public void ClickBrowser(View view){
@@ -93,8 +111,8 @@ public class MyProfile extends AppCompatActivity {
         builder.show();
     }
 
-    public static void redirectActivity(Activity activity, Class aClass) {
-        Intent intent = new Intent(activity, aClass);
+    public static void redirectActivity(Activity activity, Object aClass) {
+        Intent intent = new Intent(activity, (Class<?>) aClass);
         intent.putExtra("username", username);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         activity.startActivity(intent);

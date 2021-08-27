@@ -77,7 +77,7 @@ public class YourLibrary extends AppCompatActivity {
         MyProfile.redirectActivity(this, Home.class);
     }
 
-    public void CLickLogout(View view){
+    public void ClickLogout(View view){
         MyProfile.logout(this);
     }
 

@@ -111,7 +111,7 @@ public class BrowseBooks extends AppCompatActivity {
         MyProfile.redirectActivity(this, Home.class);
     }
 
-    public void CLickLogout(View view){
+    public void ClickLogout(View view){
         MyProfile.logout(this);
     }
 
@@ -242,6 +242,7 @@ public class BrowseBooks extends AppCompatActivity {
         Uri.Builder buider = uri.buildUpon();
 
         parseJson(buider.toString());
+
     }
 
 

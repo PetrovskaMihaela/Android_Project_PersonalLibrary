@@ -12,13 +12,13 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context){
-        super(context, "library2.db", null, 1);
+        super(context, "library.db", null, 1);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("Create table user(email text primary key, password text)");
         db.execSQL("Create table book(key_id integer primary key, title text, author text, date_added text, date_finish text, username text)");
-
+        db.execSQL("Create table goal(user text primary key, books integer, hours integer, pages integer)");
     }
 
     @Override
@@ -27,6 +27,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return;
         db.execSQL("drop table if exists user");
         db.execSQL("drop table if exists book");
+        db.execSQL("drop table if exists goal");
         onCreate(db);
     }
 
@@ -117,5 +118,50 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     void deleteBook(long id){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete("book", "key_id" + "=?", new String []{String.valueOf(id)});
+    }
+
+    public boolean insertGoal(Goal goal){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("user", goal.getUser());
+        contentValues.put("books", goal.getBooks());
+        contentValues.put("hours", goal.getHours());
+        contentValues.put("pages", goal.getPages());
+        long ins = db.insert("goal", null, contentValues);
+        if(ins == -1)
+            return false;
+        else return true;
+    }
+
+    public Boolean checkGoal(String user){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("Select * from goal where user=?", new String[]{user});
+        if (cursor.getCount() > 0) {
+            return false;
+        } else return true;
+    }
+
+
+    public int updateGoal(Goal goal){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("user", goal.getUser());
+        contentValues.put("books", goal.getBooks());
+        contentValues.put("hours", goal.getHours());
+        contentValues.put("pages", goal.getPages());
+
+        return db.update("goal", contentValues, "user"+"=?",new String[]{goal.getUser()} );
+    }
+
+    public Goal getGoal(String username){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from goal where user=?", new String[]{username});
+
+        if(cursor != null)
+            cursor.moveToFirst();
+
+        Goal goal = new Goal(cursor.getString(0), cursor.getInt(1), cursor.getInt(2), cursor.getInt(3));
+        return goal;
     }
 }
