@@ -91,6 +91,9 @@ public class Home extends AppCompatActivity {
         MyProfile.redirectActivity(this, BrowseBooks.class);
 
     }
+    public void ClickReading(View view){
+        MyProfile.redirectActivity(this, ReadingActivity.class);
+    }
 
     public void ClickLibrary(View view){
         MyProfile.redirectActivity(this, YourLibrary.class);

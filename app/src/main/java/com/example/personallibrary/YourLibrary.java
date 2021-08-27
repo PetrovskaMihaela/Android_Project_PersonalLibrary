@@ -52,6 +52,9 @@ public class YourLibrary extends AppCompatActivity {
         i.putExtra("username", username);
         startActivity(i);
     }
+    public void ClickReading(View view){
+        MyProfile.redirectActivity(this, ReadingActivity.class);
+    }
 
     public void ClickMenu(View view){
         MyProfile.openDrawer(drawerLayout);

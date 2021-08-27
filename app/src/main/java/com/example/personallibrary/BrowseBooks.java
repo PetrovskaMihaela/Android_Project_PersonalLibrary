@@ -114,6 +114,9 @@ public class BrowseBooks extends AppCompatActivity {
     public void ClickLogout(View view){
         MyProfile.logout(this);
     }
+    public void ClickReading(View view){
+        MyProfile.redirectActivity(this, ReadingActivity.class);
+    }
 
     public void ClickAdd(View view){
         Intent i = new Intent(BrowseBooks.this, AddBook.class);
