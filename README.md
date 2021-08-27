@@ -15,6 +15,3 @@
 - BrowseBooks - активност каде што корисникот внесува search query за да пребарува книги; може директно да се пренасочи кон AddBook и да се додаде избраната книга во база
 - BookActivity - избраната книга од BrowseBooks прикажана во посебна активност, со линкови за info и preview на истата на интернет
 
-Употребени концепти/алатки:
-
-- SQLite Database, Recycler View, Navigation Drawer, Google Books API, Volley (библиотека за користење на HTTP)
